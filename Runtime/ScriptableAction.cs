@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ScriptableAction : ScriptableObject
+namespace devludico.ScriptableStates
 {
-    public abstract void Act(ScriptableStatesComponent statesComponent);
+    public abstract class ScriptableAction : ScriptableObject
+    {
+        public abstract void Act(ScriptableStatesComponent statesComponent);
+    }
 }

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct StateTransition
+namespace devludico.ScriptableStates
 {
-    public ScriptableCondition condition;
-    public ScriptableState trueState;
-    public ScriptableState falseState;
+    [System.Serializable]
+    public struct StateTransition
+    {
+        public ScriptableCondition condition;
+        public ScriptableState trueState;
+        public ScriptableState falseState;
+    }
 }
