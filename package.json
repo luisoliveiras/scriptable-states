@@ -1,0 +1,18 @@
+{
+  "name": "com.devludico.scriptable-states",
+  "version": "0.1.0",
+  "displayName": "Scriptable States",
+  "description": "Scriptable Objects based FSM for Unity",
+  "unity": "2018.4",
+  "unityRelease": "0b5",
+  "dependencies": {
+ },
+ "keywords": [
+    "FSM"
+  ],
+  "author": {
+    "name": "Luis Oliveira",
+    "email": "dev.oliveiras@gmail.com",
+    "url": "https://github.com/luisoliveiras"
+  }
+}
