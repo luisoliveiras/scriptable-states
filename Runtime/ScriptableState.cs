@@ -40,7 +40,6 @@ namespace devludico.ScriptableStates
         /// </summary>
         public ScriptableState CheckTransitions(ScriptableStatesComponent statesComponent, ScriptableState emptyState)
         {
-            Debug.Log("Checking transitions");
             ScriptableState nextState = emptyState;
             for (int i = _transitions.Length - 1; i >= 0; i--)
             {
@@ -53,7 +52,6 @@ namespace devludico.ScriptableStates
                 if (candidateState != emptyState)
                     nextState = candidateState;
             }
-            Debug.Log(nextState.name);
             return nextState;
         }
 
