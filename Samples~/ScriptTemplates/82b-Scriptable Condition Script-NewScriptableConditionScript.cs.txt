@@ -1,0 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using devludico.ScriptableStates;
+
+[CreateAssetMenu(menuName = "Scriptable State Machine/Conditions/#SCRIPTNAME#", fileName = "new #SCRIPTNAME#")]
+public class #SCRIPTNAME# : ScriptableCondition
+{
+	public override bool Verify(ScriptableStatesComponent smComponent)
+	{
+		throw new System.NotImplementedException();
+	}
+}

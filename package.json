@@ -1,0 +1,25 @@
+{
+  "name": "com.devludico.scriptable-states",
+  "version": "0.1.0",
+  "displayName": "Scriptable States",
+  "description": "Scriptable Objects based FSM for Unity",
+  "unity": "2018.4",
+  "dependencies": {
+    "com.malee.reorderablelist": "1.0.1"
+  },
+  "keywords": [
+    "FSM"
+  ],
+  "author": {
+    "name": "Luis Oliveira",
+    "email": "dev.oliveiras@gmail.com",
+    "url": "https://github.com/luisoliveiras"
+  },
+  "samples":[
+    {
+     "displayName": "ScriptTemplates",
+     "description": "Script Templates for Scriptable Action and Scriptable Condition",
+     "path": "Samples~/ScriptTemplates"
+	}
+  ]
+}
