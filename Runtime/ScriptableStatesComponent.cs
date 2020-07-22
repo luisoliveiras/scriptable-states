@@ -8,26 +8,43 @@ namespace devludico.ScriptableStates
     {
         [SerializeField] ScriptableState _initialState;
         [SerializeField] ScriptableState _emptyState;
-        [SerializeField] private ScriptableState _currentState;
+        private ScriptableState _currentState;
+
+        public ScriptableState CurrentState { get => _currentState; }
 
         private void Start()
         {
+            if (!_initialState)
+            {
+                Debug.LogError($"<b><color=white>{name}</color></b> has no initial state attached to it, the state machine can't be initialized.", this);
+                return;
+            }
+
             _currentState = _initialState;
             _currentState.Begin(this);
         }
 
         private void FixedUpdate()
         {
+            if (!_currentState)
+                return;
+
             _currentState.UpdatePhysics(this);
         }
 
         private void Update()
         {
+            if (!_currentState)
+                return;
+
             _currentState.UpdateState(this);
         }
 
         private void LateUpdate()
         {
+            if (!_currentState)
+                return;
+
             CheckTransitions();
         }
 
