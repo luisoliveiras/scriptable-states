@@ -6,8 +6,8 @@ namespace devludico.ScriptableStates
 {
     public class ScriptableStatesComponent : MonoBehaviour
     {
-        [SerializeField] ScriptableState _initialState;
-        [SerializeField] ScriptableState _emptyState;
+        [SerializeField] private ScriptableState _initialState;
+        [SerializeField] private ScriptableState _emptyState;
         private ScriptableState _currentState;
 
         public ScriptableState CurrentState { get => _currentState; }
