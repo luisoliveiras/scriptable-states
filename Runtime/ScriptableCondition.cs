@@ -6,6 +6,6 @@ namespace devludico.ScriptableStates
 {
     public abstract class ScriptableCondition : ScriptableObject
     {
-        public abstract bool Verify(ScriptableStatesComponent smComponent);
+        public abstract bool Verify(ScriptableStatesComponent statesComponent);
     }
 }
