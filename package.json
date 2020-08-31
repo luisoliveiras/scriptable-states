@@ -1,6 +1,6 @@
 {
   "name": "com.devludico.scriptable-states",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Scriptable States",
   "description": "Scriptable Objects based FSM for Unity",
   "unity": "2018.4",
@@ -20,6 +20,11 @@
      "displayName": "ScriptTemplates",
      "description": "Script Templates for Scriptable Action and Scriptable Condition",
      "path": "Samples~/ScriptTemplates"
+	},
+    {
+     "displayName":"FollowBehaviourExample",
+     "description":"Simple implementation of movement, stamina, and follow behaviour using ScriptableStates",
+     "path":"Samples~/FollowBehaviourExample"
 	}
   ]
 }
