@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace devludico.ScriptableStates
@@ -13,53 +14,18 @@ namespace devludico.ScriptableStates
         [SerializeField] ScriptableAction[] _stateActions; //to be run in update
         [SerializeField] StateTransition[] _transitions; //to be run in late update
 
-        /// <summary>
-        /// Run in FixedUpdate
-        /// </summary>
-        public void UpdatePhysics(ScriptableStatesComponent statesComponent)
-        {
-            foreach (var action in _physicsActions)
-            {
-                action.Act(statesComponent);
-            }
-        }
-
-        /// <summary>
-        /// Run in Update
-        /// </summary>
-        public void UpdateState(ScriptableStatesComponent statesComponent)
-        {
-            foreach (var action in _stateActions)
-            {
-                action.Act(statesComponent);
-            }
-        }
-
-        /// <summary>
-        /// Run in LateUpdate
-        /// </summary>
-        public ScriptableState CheckTransitions(ScriptableStatesComponent statesComponent, ScriptableState emptyState)
-        {
-            ScriptableState nextState = emptyState;
-            for (int i = _transitions.Length - 1; i >= 0; i--)
-            {
-                ScriptableState candidateState;
-                if (_transitions[i].condition.Verify(statesComponent))
-                    candidateState = _transitions[i].trueState;
-                else
-                    candidateState = _transitions[i].falseState;
-
-                if (candidateState != emptyState)
-                    nextState = candidateState;
-            }
-            return nextState;
-        }
-
         public void Begin(ScriptableStatesComponent statesComponent)
         {
             foreach (var action in _entryActions)
             {
-                action.Act(statesComponent);
+                if (action)
+                {
+                    action.Act(statesComponent);
+                }
+                else
+                {
+                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s Entry Actions list has a null element", this);
+                }
             }
         }
 
@@ -67,8 +33,89 @@ namespace devludico.ScriptableStates
         {
             foreach (var action in _exitActions)
             {
-                action.Act(statesComponent);
+                if (action)
+                {
+                    action.Act(statesComponent);
+                }
+                else
+                {
+                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s Exit Actions list has a null element", this);
+                }
             }
         }
+
+        public void UpdatePhysics(ScriptableStatesComponent statesComponent)
+        {
+            foreach (var action in _physicsActions)
+            {
+                if (action)
+                {
+                    action.Act(statesComponent);
+                }
+                else
+                {
+                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s Physics Actions list has a null element", this);
+                }
+            }
+        }
+
+        public void UpdateState(ScriptableStatesComponent statesComponent)
+        {
+            foreach (var action in _stateActions)
+            {
+                if (action)
+                {
+                    action.Act(statesComponent);
+                }
+                else
+                {
+                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s State Actions list has a null element", this);
+                }
+            }
+        }
+
+        public ScriptableState CheckTransitions(ScriptableStatesComponent statesComponent, ScriptableState emptyState)
+        {
+            foreach (StateTransition transition in _transitions)
+            {
+                if (transition.condition)
+                {
+                    if (transition.condition.Verify(statesComponent))
+                    {
+                        if (transition.trueState != emptyState)
+                        {
+                            if (transition.trueState)
+                            {
+                                return transition.trueState;
+                            }
+                            else
+                            {
+                                Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null true state", this);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (transition.falseState != emptyState)
+                        {
+                            if (transition.falseState)
+                            {
+                                return transition.falseState;
+                            }
+                            else
+                            {
+                                Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null false state", this);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null condition", this);
+                }
+            }
+            return emptyState;
+        }
+
     }
 }
