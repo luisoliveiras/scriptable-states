@@ -16,6 +16,18 @@ Open the package manager on _**Window > Package Manager**_ and select the **+** 
 _\* The order is important as the custom editor for ScriptableState uses the reorderable lists._
 
 ##### On Unity 2019.1 and above:
+Open the project manifest file under the Packages folder and add these lines to the dependencies:
+```json
+"dependencies": {
+  ...
+    "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git",   
+    "com.devludico.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git",
+  ...
+}
+
+```
+
+##### On Unity 2019.3 and above:
 Open the package manager on _**Window > Package Manager**_ and select the **+** button and click on the **Add package from git URL...** option.
 - Add the ReorderableList package from: https://github.com/cfoulston/Unity-Reorderable-List.git
 - Add the ScriptableStates package from: https://github.com/luisoliveiras/scriptable-states.git
@@ -45,7 +57,7 @@ A **Transition** contains a `ScriptableCondition` that will be tested, a _True S
 #### Creating Actions
 Create a _C#_ script inheriting from ScriptableAction and add a CreateMenu attribute to it like in the example below:
 
-```
+```csharp
 [CreateAssetMenu(menuName = "Scriptable State Machine/Actions/MyAction", fileName = "new MyAction")]
 public class MyAction : ScriptableAction
 {
@@ -62,7 +74,7 @@ With this done, you're ready to create some action from the **_Create > Scriptab
 #### Creating Conditions
 Create a _C#_ script inheriting from ScriptableCondition and add a CreateMenu attribute to it like in the example below:
 
-```
+```csharp
 [CreateAssetMenu(menuName = "Scriptable State Machine/Conditions/MyCondition", fileName = "new MyCondition")]
 public class MyCondition : ScriptableCondition
 {
@@ -99,3 +111,9 @@ Following this steps you should not have problems setting up your states machine
 ![Scriptable Condition Script on Create Menu](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/create_menu_condition_script_01.png?token=ADU3KQGNMLPQYYMZDTZSECK64WT2O)
 
 **How:** Move the _ScriptTemplates_ folder from _Samples_ to your _Assets_ folder (root) and restart the editor. The _"Scriptable Action Script"_ and _"Scriptable Condition Script"_ options will be available under the Create menu options. If you already have a ScriptTemplates folder in your project, just move the assets inside the _Samples/ScriptTemplates_ folder to it and restart the editor.
+
+#### Follow Behavior Example:
+
+**What:** A Simple implementation of movement, stamina and follow behaviour using _scriptable states, actions and conditions_.
+
+**How:** Install the sample from the Package Manager UI. Open the _FollowBehaviourExample_ scene inside the _Follow Behaviour Example_ folder added to your project's _Assets_ folder and you're ready to go.
