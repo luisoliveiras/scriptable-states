@@ -1,4 +1,5 @@
 # Scriptable States
+![GitHub package.json version](https://img.shields.io/github/package-json/v/luisoliveiras/scriptable-states?color=green)
 
 
 ## What is this?
@@ -79,7 +80,7 @@ Create a _C#_ script inheriting from ScriptableCondition and add a CreateMenu at
 public class MyCondition : ScriptableCondition
 {
     //Add some variables here to setup your condition
-	public override bool Verify(ScriptableStatesComponent smComponent)
+	public override bool Verify(ScriptableStatesComponent statesComponent)
 	{
         // put your code here
         // You can use the statesComponent to get other components in your game object
