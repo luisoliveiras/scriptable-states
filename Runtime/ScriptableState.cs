@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace devludico.ScriptableStates
+namespace loophouse.ScriptableStates
 {
     [CreateAssetMenu(menuName = "Scriptable State Machine/State", fileName = "State")]
     public class ScriptableState : ScriptableObject

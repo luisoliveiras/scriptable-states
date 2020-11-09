@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using devludico.ScriptableStates;
+using loophouse.ScriptableStates;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 

@@ -2,7 +2,7 @@
 using UnityEditor;
 
 
-namespace devludico.ScriptableStates
+namespace loophouse.ScriptableStates
 {
     [CustomEditor(typeof(ScriptableState))]
     public class ScriptableStateEditor : Editor

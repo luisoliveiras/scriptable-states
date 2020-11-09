@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using devludico.ScriptableStates;
+using loophouse.ScriptableStates;
 
 [CreateAssetMenu(menuName = "Scriptable State Machine/Conditions/StaminaCheckCondition", fileName = "new StaminaCheckCondition")]
 public class StaminaCheckCondition : ScriptableCondition

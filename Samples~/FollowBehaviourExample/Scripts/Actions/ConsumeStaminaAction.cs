@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using devludico.ScriptableStates;
+using loophouse.ScriptableStates;
 
 [CreateAssetMenu(menuName = "Scriptable State Machine/Actions/ConsumeStaminaAction", fileName = "new ConsumeStaminaAction")]
 public class ConsumeStaminaAction : ScriptableAction
