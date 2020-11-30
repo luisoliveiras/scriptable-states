@@ -93,9 +93,9 @@ You can add variables and set them visible in the inspector to create variations
 #### Creating the States Component
 Create the `GameObject` that will driven by the state machine, in the Inspector, click in **Add Component** and search for `ScriptableStatesComponent` and add it to your game object.
 
-![Scriptable States Component](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/inspector_states_component_01.png?token=ADU3KQFCN4CDX2BZFJ2KCO2642PGO)
+![Scriptable States Component](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/inspector_states_component_02.gif)
 
-To set up this component, add the starting state of your state machine to the _Initial State_ field, and for the _Empty State_ field, click on it and search for the **_EmptyState_** asset that comes with this package. The _Current State_ field will be filled in run time, so don't bother filling it up.
+To set up this component, add the starting state of your state machine to the _Initial State_ field, and for the _Empty State_ field, click on it and search for the **_EmptyState_** asset that comes with this package. While in play mode, the **_Current State_** will show the current state of this component in green, if something go wrong with your states or if it is not in play mode, it will show "**None**" in red.
 
 Following this steps you should not have problems setting up your states machines.
 
@@ -116,5 +116,8 @@ Following this steps you should not have problems setting up your states machine
 #### Follow Behavior Example:
 
 **What:** A Simple implementation of movement, stamina and follow behaviour using _scriptable states, actions and conditions_.
+
+![Follow Behaviour Example](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/follow_behaviour_example.gif)
+
 
 **How:** Install the sample from the Package Manager UI. Open the _FollowBehaviourExample_ scene inside the _Follow Behaviour Example_ folder added to your project's _Assets_ folder and you're ready to go.
