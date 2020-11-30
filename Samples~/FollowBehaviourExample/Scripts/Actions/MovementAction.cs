@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using devludico.ScriptableStates;
+using loophouse.ScriptableStates;
 
 [CreateAssetMenu(menuName = "Scriptable State Machine/Actions/MovementAction", fileName = "new MovementAction")]
 public class MovementAction : ScriptableAction

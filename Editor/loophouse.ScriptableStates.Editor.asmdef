@@ -1,5 +1,5 @@
 {
-    "name": "devludico.ScriptableStates.Editor",
+    "name": "loophouse.ScriptableStates.Editor",
     "references": [
         "GUID:5be546b8e968dae4c95d4ab05b94a01e",
         "GUID:d178ac4b10764814c8ae876ce6354d19",

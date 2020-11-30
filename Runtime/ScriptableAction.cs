@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace devludico.ScriptableStates
+namespace loophouse.ScriptableStates
 {
     public abstract class ScriptableAction : ScriptableObject
     {

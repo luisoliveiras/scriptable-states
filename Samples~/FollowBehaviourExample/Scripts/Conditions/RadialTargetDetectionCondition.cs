@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using devludico.ScriptableStates;
+using loophouse.ScriptableStates;
 
 [CreateAssetMenu(menuName = "Scriptable State Machine/Conditions/RadialTargetDetectionCondition", fileName = "new RadialTargetDetectionCondition")]
 public class RadialTargetDetectionCondition : ScriptableCondition

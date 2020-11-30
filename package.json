@@ -1,6 +1,6 @@
 {
-  "name": "com.devludico.scriptable-states",
-  "version": "0.2.0",
+  "name": "com.loophouse.scriptable-states",
+  "version": "0.3.0",
   "displayName": "Scriptable States",
   "description": "Scriptable Objects based FSM for Unity",
   "unity": "2018.4",
