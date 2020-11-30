@@ -22,7 +22,7 @@ Open the project manifest file under the Packages folder and add these lines to 
 "dependencies": {
   ...
     "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git",   
-    "com.devludico.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git",
+    "com.loophouse.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git",
   ...
 }
 
