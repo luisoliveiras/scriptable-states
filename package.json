@@ -1,12 +1,9 @@
 {
   "name": "com.loophouse.scriptable-states",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "displayName": "Scriptable States",
   "description": "Scriptable Objects based FSM for Unity",
   "unity": "2018.4",
-  "dependencies": {
-    "com.malee.reorderablelist": "1.0.1"
-  },
   "keywords": [
     "FSM"
   ],
@@ -15,16 +12,16 @@
     "email": "dev.oliveiras@gmail.com",
     "url": "https://github.com/luisoliveiras"
   },
-  "samples":[
+  "samples": [
     {
-     "displayName": "ScriptTemplates",
-     "description": "Script Templates for Scriptable Action and Scriptable Condition",
-     "path": "Samples~/ScriptTemplates"
-	},
+      "displayName": "ScriptTemplates",
+      "description": "Script Templates for Scriptable Action and Scriptable Condition",
+      "path": "Samples~/ScriptTemplates"
+    },
     {
-     "displayName":"FollowBehaviourExample",
-     "description":"Simple implementation of movement, stamina, and follow behaviour using ScriptableStates",
-     "path":"Samples~/FollowBehaviourExample"
-	}
+      "displayName": "FollowBehaviourExample",
+      "description": "Simple implementation of movement, stamina, and follow behaviour using ScriptableStates",
+      "path": "Samples~/FollowBehaviourExample"
+    }
   ]
 }
