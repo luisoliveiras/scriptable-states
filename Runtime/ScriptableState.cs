@@ -12,7 +12,6 @@ namespace loophouse.ScriptableStates
         [SerializeField] ScriptableAction[] _exitActions;
         [SerializeField] ScriptableAction[] _physicsActions; //to be run in fixed update
         [SerializeField] ScriptableAction[] _stateActions; //to be run in update
-        [SerializeField] StateTransition[] _transitions; //to be run in late update
 
         public void Begin(ScriptableStatesComponent statesComponent)
         {
@@ -73,49 +72,5 @@ namespace loophouse.ScriptableStates
                 }
             }
         }
-
-        public ScriptableState CheckTransitions(ScriptableStatesComponent statesComponent, ScriptableState emptyState)
-        {
-            foreach (StateTransition transition in _transitions)
-            {
-                if (transition.condition)
-                {
-                    if (transition.condition.Verify(statesComponent))
-                    {
-                        if (transition.trueState != emptyState)
-                        {
-                            if (transition.trueState)
-                            {
-                                return transition.trueState;
-                            }
-                            else
-                            {
-                                Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null true state", this);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (transition.falseState != emptyState)
-                        {
-                            if (transition.falseState)
-                            {
-                                return transition.falseState;
-                            }
-                            else
-                            {
-                                Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null false state", this);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null condition", this);
-                }
-            }
-            return emptyState;
-        }
-
     }
 }

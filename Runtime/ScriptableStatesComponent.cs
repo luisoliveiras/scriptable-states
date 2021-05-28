@@ -6,21 +6,20 @@ namespace loophouse.ScriptableStates
 {
     public class ScriptableStatesComponent : MonoBehaviour
     {
-        [SerializeField] private ScriptableState _initialState;
-        [SerializeField] private ScriptableState _emptyState;
+        [SerializeField] private ScriptableStateMachine _stateMachine;
         private ScriptableState _currentState;
 
         public ScriptableState CurrentState { get => _currentState; }
 
         private void Start()
         {
-            if (!_initialState)
+            if (!_stateMachine.InitialState)
             {
-                Debug.LogError($"<b><color=white>{name}</color></b> has no initial state attached to it, the state machine can't be initialized.", this);
+                Debug.LogError($"<b><color=white>{_stateMachine.name}</color></b> has no initial state attached to it, the state machine can't be initialized.", this);
                 return;
             }
 
-            _currentState = _initialState;
+            _currentState = _stateMachine.InitialState;
             _currentState.Begin(this);
         }
 
@@ -50,8 +49,8 @@ namespace loophouse.ScriptableStates
 
         public void CheckTransitions()
         {
-            ScriptableState nextState = _currentState.CheckTransitions(this, _emptyState);
-            if (nextState != _emptyState)
+            ScriptableState nextState = _stateMachine.CheckTransitions(this, _currentState);
+            if (nextState != _stateMachine.EmptyState)
             {
                 _currentState.End(this);
                 _currentState = nextState;
