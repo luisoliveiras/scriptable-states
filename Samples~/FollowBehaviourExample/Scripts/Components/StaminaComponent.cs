@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaminaComponent : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class StaminaComponent : MonoBehaviour
     [SerializeField] private int _currentStamina;
     [SerializeField] private int _dropPerSecond;
     [SerializeField] private int _recoverPerSecond;
+    [SerializeField] private Image _staminaBar;
     private float timer;
 
     public int MaxStamina { get => _maxStamina; }
@@ -16,6 +18,7 @@ public class StaminaComponent : MonoBehaviour
     void Start()
     {
         _currentStamina = _maxStamina;
+        UpdateStaminaBar();
     }
 
     public StaminaStatus GetStaminaStatus()
@@ -51,6 +54,7 @@ public class StaminaComponent : MonoBehaviour
                 }
             }
             timer = 0;
+            UpdateStaminaBar();
         }
     }
 
@@ -71,7 +75,13 @@ public class StaminaComponent : MonoBehaviour
                 }
             }
             timer = 0;
+            UpdateStaminaBar();
         }
+    }
+
+    private void UpdateStaminaBar()
+    {
+        _staminaBar.fillAmount = ((float)_currentStamina / (float)_maxStamina);
     }
 }
 

@@ -17,7 +17,3 @@ MonoBehaviour:
   _exitActions: []
   _physicsActions: []
   _stateActions: []
-  _transitions:
-  - condition: {fileID: 11400000, guid: c109c61b6c60e7a4b8cbe9515bfbdc70, type: 2}
-    trueState: {fileID: 11400000, guid: fb778ba37ab1f084a8805807dbbbd976, type: 2}
-    falseState: {fileID: 11400000, guid: 20352fc7a011e8748b8ba85265763ede, type: 2}
