@@ -16,42 +16,45 @@ namespace loophouse.ScriptableStates
 
         public ScriptableState CheckTransitions(ScriptableStatesComponent statesComponent, ScriptableState currentState)
         {
-            foreach (StateTransition transition in _transitions.FindAll(transition => transition.originState == currentState))
+            foreach (StateTransition transition in _transitions)
             {
-                if (transition.condition)
+                if (transition.originState == currentState)
                 {
-                    if (transition.condition.Verify(statesComponent))
+                    if (transition.condition)
                     {
-                        if (transition.trueState != _emptyState)
+                        if (transition.condition.Verify(statesComponent))
                         {
-                            if (transition.trueState)
+                            if (transition.trueState != _emptyState)
                             {
-                                return transition.trueState;
+                                if (transition.trueState)
+                                {
+                                    return transition.trueState;
+                                }
+                                else
+                                {
+                                    Debug.LogError($"[SCRIPTABLE STATE MACHINE] {name}'s Transitions list has an element with a null true state", this);
+                                }
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (transition.falseState != _emptyState)
                             {
-                                Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null true state", this);
+                                if (transition.falseState)
+                                {
+                                    return transition.falseState;
+                                }
+                                else
+                                {
+                                    Debug.LogError($"[SCRIPTABLE STATE MACHINE] {name}'s Transitions list has an element with a null false state", this);
+                                }
                             }
                         }
                     }
                     else
                     {
-                        if (transition.falseState != _emptyState)
-                        {
-                            if (transition.falseState)
-                            {
-                                return transition.falseState;
-                            }
-                            else
-                            {
-                                Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null false state", this);
-                            }
-                        }
+                        Debug.LogError($"[SCRIPTABLE STATE MACHINE] {name}'s Transitions list has an element with a null condition", this);
                     }
-                }
-                else
-                {
-                    Debug.LogError($"[SCRIPTABLE STATE] {name}'s Transitions list has an element with a null condition", this);
                 }
             }
             return _emptyState;
