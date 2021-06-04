@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ---
 
+## [0.3.1] - 2021-06-03
+### Fixed
+- Removed unused imports (UnityEditorInternal) on scripts causing builds to fail.
+
+
 ## [0.3.0] - 2020-11-09
 ### Changed
 - Company name changed from devludico to loophouse.
