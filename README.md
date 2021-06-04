@@ -1,40 +1,35 @@
 # Scriptable States
-![GitHub package.json version](https://img.shields.io/github/package-json/v/luisoliveiras/scriptable-states?color=green)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/luisoliveiras/scriptable-states?label=current%20release)
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/luisoliveiras/scriptable-states/develop?label=develop)
 
 
 ## What is this?
 Scriptable States is a `ScriptableObject` based implementaton of a Finite State Machine.   
-It's main purpose is to create reusable behaviour bits like the `ScriptableAction` and the `ScriptableCondition`, and be able to create and edit a sequence of possible states using the `ScriptableState`, using those actions and conditions to create unique behaviour through the editor.
+It's main purpose is to create reusable behaviour bits like the `ScriptableAction` and the `ScriptableCondition`, and be able to create and edit a `ScriptableState` using those actions and sequencing those states with a `ScriptableStateMachine` setting transitions with those conditions to create unique behaviour through the editor.
 
 ---
 ## Installation:
 ##### On Unity 2018.4:
-Download this package and the [ReorderableList](https://github.com/cfoulston/Unity-Reorderable-List) package to your disk.
-Open the package manager on _**Window > Package Manager**_ and select the **+** button and click on the **Add package from disk...** option.
-- Add the ReorderableList package.
-- Add the ScriptableStates package.
-
-_\* The order is important as the custom editor for ScriptableState uses the reorderable lists._
+Download this package to your disk.
+Open the package manager on _**Window > Package Manager**_ and select the **+** button and click on the **Add package from disk...** option and then add the ScriptableStates package.
 
 ##### On Unity 2019.1 and above:
 Open the project manifest file under the Packages folder and add these lines to the dependencies:
 ```json
 "dependencies": {
-  ...
-    "com.malee.reorderablelist": "https://github.com/cfoulston/Unity-Reorderable-List.git",   
-    "com.loophouse.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git",
+  ...  
+    "com.loophouse.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git#v0.4.0",
   ...
 }
 
 ```
 
 ##### On Unity 2019.3 and above:
-Open the package manager on _**Window > Package Manager**_ and select the **+** button and click on the **Add package from git URL...** option.
-- Add the ReorderableList package from: https://github.com/cfoulston/Unity-Reorderable-List.git
-- Add the ScriptableStates package from: https://github.com/luisoliveiras/scriptable-states.git
+Open the package manager on _**Window > Package Manager**_ and select the **+** button and click on the **Add package from git URL...** option and then add the ScriptableStates package link: https://github.com/luisoliveiras/scriptable-states.git#v0.4.0
 
-_\* The order is important as the custom editor for ScriptableState uses the reorderable lists._   
-_\** You can also add it from disk if you want, just follow the steps from 2018.4 install guide._
+_\* You can also add it from disk if you want, just follow the steps from 2018.4 install guide._\
+_\** You can can choose another version of the tool by changing the end of the link (#v0.4.0) for the version you want. Versions under v0.4.0 have a dependency on the reorderable list package._
+
 
 ---
 ## How to Use
@@ -46,14 +41,19 @@ Select a name for your state and you should be ready to use it. The image below 
 
 ![Scriptable State Asset on Inspector](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/inspector_state_01.png?token=ADU3KQFACBTJZPANEYHWPV264ZE3K)
 
-As you can see from the image, a state contains five lists: **Entry Actions**, **Exit Actions**, **Physics Actions**, **State Actions** and **Transitions**.
+As you can see from the image, a state contains five lists: **Entry Actions**, **Exit Actions**, **Physics Actions** and **State Actions**.
 - **Entry Actions** are excecuted only once, when there is a transition to the state.
 - **Exit Actions** are executed only once, when there is a transition from the state.
 - **Physics Actions** are executed in the `FixedUpdate()` method.
 - **State Actions** are executed in the `Update()` method.
-- **Transitions** are executed in the `LateUpdate()` method, where a condition will be tested, triggering a move (or not) to the next state.
 
-A **Transition** contains a `ScriptableCondition` that will be tested, a _True State_, achieved when the condition is met, and a _False State_ when not.
+#### Creating a State Machine
+Access _**Create > Scriptable State Machine > State Machine**_ like the image below.
+![Scriptable State on Create Menu](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/create_menu_state_01.png?token=ADU3KQGHSWLQQHG5D7XG2LK64W2PC)
+
+To set up a **State Machine** you will need an _Initial State_, from where your state machine will start, an _Empty State_ reference, which will be used when comparing the transitions responses and a list of all possible _Transitions_ for that state machine.
+
+**Transitions** are executed in the `LateUpdate()` method, where based on the current state of the state machine a condition will be tested, triggering a move (or not) to the next state. A **Transition** contains a _Origin State_ that will be compared to the current state, a `ScriptableCondition` that will be tested, a _True State_, achieved when the condition is met, and a _False State_ when not.
 
 #### Creating Actions
 Create a _C#_ script inheriting from ScriptableAction and add a CreateMenu attribute to it like in the example below:
@@ -90,7 +90,7 @@ public class MyCondition : ScriptableCondition
 With this step completed, it is now possible to create a condition from the **_Create > Scriptable State Machine > Conditions_** menu and start setting up your states' transitions. The states transitions uses the value returned from the condition's Verify method to determine if should go to the state referenced by the _True State_ or _False State_.
 You can add variables and set them visible in the inspector to create variations of that condition, like a DetectionCondition that uses a float to determine the detection radius.
 
-#### Creating the States Component
+#### Creating the State Machine Component
 Create the `GameObject` that will driven by the state machine, in the Inspector, click in **Add Component** and search for `ScriptableStatesComponent` and add it to your game object.
 
 ![Scriptable States Component](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/inspector_states_component_02.gif)
