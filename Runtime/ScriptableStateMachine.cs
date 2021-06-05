@@ -14,7 +14,7 @@ namespace loophouse.ScriptableStates
         public ScriptableState InitialState { get => _initialState; }
         public ScriptableState EmptyState { get => _emptyState; }
 
-        public ScriptableState CheckTransitions(ScriptableStatesComponent statesComponent, ScriptableState currentState)
+        public ScriptableState CheckTransitions(StateComponent stateComponent, ScriptableState currentState)
         {
             foreach (StateTransition transition in _transitions)
             {
@@ -22,7 +22,7 @@ namespace loophouse.ScriptableStates
                 {
                     if (transition.condition)
                     {
-                        if (transition.condition.Verify(statesComponent))
+                        if (transition.condition.Verify(stateComponent))
                         {
                             if (transition.trueState != _emptyState)
                             {

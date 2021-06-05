@@ -10,13 +10,13 @@ namespace loophouse.ScriptableStates
         [SerializeField] ScriptableAction[] _physicsActions; //to be run in fixed update
         [SerializeField] ScriptableAction[] _stateActions; //to be run in update
 
-        public void Begin(ScriptableStatesComponent statesComponent)
+        public void Begin(StateComponent stateComponent)
         {
             foreach (var action in _entryActions)
             {
                 if (action)
                 {
-                    action.Act(statesComponent);
+                    action.Act(stateComponent);
                 }
                 else
                 {
@@ -25,13 +25,13 @@ namespace loophouse.ScriptableStates
             }
         }
 
-        public void End(ScriptableStatesComponent statesComponent)
+        public void End(StateComponent stateComponent)
         {
             foreach (var action in _exitActions)
             {
                 if (action)
                 {
-                    action.Act(statesComponent);
+                    action.Act(stateComponent);
                 }
                 else
                 {
@@ -40,13 +40,13 @@ namespace loophouse.ScriptableStates
             }
         }
 
-        public void UpdatePhysics(ScriptableStatesComponent statesComponent)
+        public void UpdatePhysics(StateComponent stateComponent)
         {
             foreach (var action in _physicsActions)
             {
                 if (action)
                 {
-                    action.Act(statesComponent);
+                    action.Act(stateComponent);
                 }
                 else
                 {
@@ -55,13 +55,13 @@ namespace loophouse.ScriptableStates
             }
         }
 
-        public void UpdateState(ScriptableStatesComponent statesComponent)
+        public void UpdateState(StateComponent stateComponent)
         {
             foreach (var action in _stateActions)
             {
                 if (action)
                 {
-                    action.Act(statesComponent);
+                    action.Act(stateComponent);
                 }
                 else
                 {

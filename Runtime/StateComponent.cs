@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace loophouse.ScriptableStates
 {
-    public class ScriptableStatesComponent : MonoBehaviour
+    public class StateComponent : MonoBehaviour
     {
         [SerializeField] private ScriptableStateMachine _stateMachine;
         private ScriptableState _currentState;
 
         public ScriptableState CurrentState { get => _currentState; }
+        /// <summary>
+        /// T1: Previous State, T2: Current State
+        /// </summary>
+        public Action<ScriptableState, ScriptableState> OnStateChanged;
 
         private void Start()
         {
@@ -53,8 +56,11 @@ namespace loophouse.ScriptableStates
             if (nextState != _stateMachine.EmptyState)
             {
                 _currentState.End(this);
+                var previousState = CurrentState;
                 _currentState = nextState;
                 _currentState.Begin(this);
+
+                OnStateChanged?.Invoke(previousState,nextState);
             }
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace loophouse.ScriptableStates
 {
-    [CustomEditor(typeof(ScriptableStatesComponent))]
+    [CustomEditor(typeof(StateComponent))]
     public class ScriptableStatesComponentEditor : Editor
     {
         Color _rectColor;
@@ -35,7 +35,7 @@ namespace loophouse.ScriptableStates
 
         private string GetCurrentStateName()
         {
-            ScriptableStatesComponent component = serializedObject.targetObject as ScriptableStatesComponent;
+            StateComponent component = serializedObject.targetObject as StateComponent;
             if (component.CurrentState)
                 return $"<color=green>{component.CurrentState.name}</color>";
             else
