@@ -7,10 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ---
 
-## [0.4.0] - 2021-06-04
+## [0.4.0] - 2021-06-05
 ### Added
 - New ScriptableStateMachine class, containing a list of all possible transitions for that state machine, making states more reusable.
 - New callback OnStateChanged for the StateComponent, with both previous and current state as parameters.
+- New Stamina bar for the Follow Behaviour Example
 
 ### Changed
 - ScriptableStatesComponent now only have a reference to the ScriptableStateMachine, that has the references to the initial state and empty state for that machine.

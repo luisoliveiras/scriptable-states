@@ -98,7 +98,7 @@ You can add variables and set them visible in the inspector to create variations
 #### Creating the State Component
 Create the `GameObject` that will driven by the state machine, in the Inspector, click in **Add Component** and search for `StateComponent` and add it to your game object.
 
-![Scriptable States Component](https://github.com/luisoliveiras/project-images/blob/master/scriptable-states/v0.4.0/inspector_state_component_1.gif?raw=true)
+![States Component](https://github.com/luisoliveiras/project-images/blob/master/scriptable-states/v0.4.0/inspector_state_component_1.gif?raw=true)
 
 To set up this component, add a `ScriptableStateMachine` on the _State Machine_ field. By doing this, the `StateComponent` will start on the _Initial State_ set on the _State Machine_, running its _actions_ while testing the _State Machine_'s _transitions_ for new states. While in play mode, the _Current State_ will show the current state of this component in green and if something go wrong with your states or if it is not in play mode, it will show "_None_" in red.
 
@@ -122,7 +122,8 @@ Following this steps you should not have problems setting up your states machine
 
 **What:** A Simple implementation of movement, stamina and follow behaviour using _scriptable states, scriptable state machines, actions and conditions_.
 
-![Follow Behaviour Example](https://raw.githubusercontent.com/luisoliveiras/project-images/master/scriptable-states/follow_behaviour_example.gif)
+![Follow Behaviour Example](https://github.com/luisoliveiras/project-images/blob/master/scriptable-states/v0.4.0/follow_behaviour_example.gif?raw=true)
 
 
-**How:** Install the sample from the Package Manager UI. Open the _FollowBehaviourExample_ scene inside the _Follow Behaviour Example_ folder added to your project's _Assets_ folder and you're ready to go.
+**How:** Install the sample from the Package Manager UI. Open the _FollowBehaviourExample_ scene inside the _Follow Behaviour Example_ folder added to your project's _Assets_ folder and you're ready to go.  
+_\* This sample requires the new unity Input System to work._
