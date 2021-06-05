@@ -8,7 +8,7 @@ public class StaminaCheckCondition : ScriptableCondition
 {
 	public StaminaStatus checkStatus;
 
-	public override bool Verify(ScriptableStatesComponent statesComponent)
+	public override bool Verify(StateComponent statesComponent)
 	{
 		return checkStatus == statesComponent.GetComponent<StaminaComponent>().GetStaminaStatus();
 	}

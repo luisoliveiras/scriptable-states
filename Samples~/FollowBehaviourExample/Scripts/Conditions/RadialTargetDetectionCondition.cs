@@ -7,7 +7,7 @@ public class RadialTargetDetectionCondition : ScriptableCondition
 	public float detectionRadius;
 	public LayerMask detectionLayer;
 
-	public override bool Verify(ScriptableStatesComponent smComponent)
+	public override bool Verify(StateComponent smComponent)
 	{
 		Vector2 position = smComponent.transform.position;
 		Transform target = Physics2D.OverlapCircle(position, detectionRadius, detectionLayer)?.transform;

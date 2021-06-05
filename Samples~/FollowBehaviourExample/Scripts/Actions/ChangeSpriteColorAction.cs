@@ -8,7 +8,7 @@ public class ChangeSpriteColorAction : ScriptableAction
 {
 	public Color newColor = Color.white;
 
-	public override void Act(ScriptableStatesComponent statesComponent)
+	public override void Act(StateComponent statesComponent)
 	{
 		statesComponent.GetComponent<SpriteRenderer>().color = newColor;
 	}
