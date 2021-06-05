@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ReorderableList package has been removed. It is recommended to use Unity 2020.3 or higher from now on. (lists and arrays are now reorderable on Unity)
 
 ---
+## [0.3.1] - 2021-06-03
+### Fixed
+- Removed unused imports (UnityEditorInternal) on scripts causing builds to fail.
+
 
 ## [0.3.0] - 2020-11-09
 ### Changed
