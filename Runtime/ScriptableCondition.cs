@@ -6,6 +6,6 @@ namespace loophouse.ScriptableStates
 {
     public abstract class ScriptableCondition : ScriptableObject
     {
-        public abstract bool Verify(ScriptableStatesComponent statesComponent);
+        public abstract bool Verify(StateComponent statesComponent);
     }
 }

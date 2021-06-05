@@ -6,7 +6,7 @@ using loophouse.ScriptableStates;
 [CreateAssetMenu(menuName = "Scriptable State Machine/Conditions/#SCRIPTNAME#", fileName = "new #SCRIPTNAME#")]
 public class #SCRIPTNAME# : ScriptableCondition
 {
-	public override bool Verify(ScriptableStatesComponent statesComponent)
+	public override bool Verify(StateComponent stateComponent)
 	{
 		throw new System.NotImplementedException();
 	}

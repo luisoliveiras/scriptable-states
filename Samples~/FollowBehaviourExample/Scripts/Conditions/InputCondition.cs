@@ -18,7 +18,7 @@ public class InputCondition : ScriptableCondition
 		_inputAction = inputActionAsset.FindAction(actionName);
 	}
 
-	public override bool Verify(ScriptableStatesComponent statesComponent)
+	public override bool Verify(StateComponent statesComponent)
 	{
 		_button = _inputAction.activeControl as ButtonControl;
 		if (_button != null)

@@ -6,6 +6,6 @@ namespace loophouse.ScriptableStates
 {
     public abstract class ScriptableAction : ScriptableObject
     {
-        public abstract void Act(ScriptableStatesComponent statesComponent);
+        public abstract void Act(StateComponent statesComponent);
     }
 }

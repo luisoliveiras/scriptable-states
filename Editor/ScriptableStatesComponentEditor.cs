@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace loophouse.ScriptableStates
 {
-    [CustomEditor(typeof(ScriptableStatesComponent))]
+    [CustomEditor(typeof(StateComponent))]
     public class ScriptableStatesComponentEditor : Editor
     {
         Color _rectColor;
@@ -19,12 +19,9 @@ namespace loophouse.ScriptableStates
             serializedObject.Update();
             
             EditorGUILayout.Space();
-            EditorGUILayout.ObjectField(serializedObject.FindProperty("_initialState"));
-            if (!serializedObject.FindProperty("_initialState").objectReferenceValue)
-                EditorGUILayout.HelpBox("Initial state missing, select a state to be your initial state.", MessageType.Warning, true);
-            EditorGUILayout.ObjectField(serializedObject.FindProperty("_emptyState"));
-            if (!serializedObject.FindProperty("_emptyState").objectReferenceValue)
-                EditorGUILayout.HelpBox("Empty state missing, select the _EmptyState asset for this option.", MessageType.Warning, true);
+            EditorGUILayout.ObjectField(serializedObject.FindProperty("_stateMachine"));
+            if (!serializedObject.FindProperty("_stateMachine").objectReferenceValue)
+                EditorGUILayout.HelpBox("State Machine missing, select a state machine to run.", MessageType.Warning, true);
 
             EditorGUILayout.Space();
             Rect horizontalGroup = EditorGUILayout.BeginHorizontal();
@@ -38,7 +35,7 @@ namespace loophouse.ScriptableStates
 
         private string GetCurrentStateName()
         {
-            ScriptableStatesComponent component = serializedObject.targetObject as ScriptableStatesComponent;
+            StateComponent component = serializedObject.targetObject as StateComponent;
             if (component.CurrentState)
                 return $"<color=green>{component.CurrentState.name}</color>";
             else

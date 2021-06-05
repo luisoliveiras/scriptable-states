@@ -1,9 +1,8 @@
 {
     "name": "loophouse.ScriptableStates.Editor",
+    "rootNamespace": "",
     "references": [
-        "GUID:5be546b8e968dae4c95d4ab05b94a01e",
-        "GUID:d178ac4b10764814c8ae876ce6354d19",
-        "GUID:466d4cb32fd66ef4f99747d4eb7191d9"
+        "GUID:5be546b8e968dae4c95d4ab05b94a01e"
     ],
     "includePlatforms": [
         "Editor"

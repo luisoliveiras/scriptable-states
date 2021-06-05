@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ---
 
+## [0.4.0] - 2021-06-05
+### Added
+- New ScriptableStateMachine class, containing a list of all possible transitions for that state machine, making states more reusable.
+- New callback OnStateChanged for the StateComponent, with both previous and current state as parameters.
+- New Stamina bar for the Follow Behaviour Example
+
+### Changed
+- ScriptableStatesComponent now only have a reference to the ScriptableStateMachine, that has the references to the initial state and empty state for that machine.
+- ScriptableState no longer has a list of transitions. Entry actions, exit actions, physics actions and state actions remain.
+- ScriptableStateComponent becomes StateComponent.
+
+### Removed
+- ReorderableList package has been removed. It is recommended to use Unity 2020.3 or higher from now on. (lists and arrays are now reorderable on Unity)
+
+---
 ## [0.3.1] - 2021-06-03
 ### Fixed
 - Removed unused imports (UnityEditorInternal) on scripts causing builds to fail.

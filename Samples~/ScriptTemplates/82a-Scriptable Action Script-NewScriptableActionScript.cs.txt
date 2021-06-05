@@ -6,7 +6,7 @@ using loophouse.ScriptableStates;
 [CreateAssetMenu(menuName = "Scriptable State Machine/Actions/#SCRIPTNAME#", fileName = "new #SCRIPTNAME#")]
 public class #SCRIPTNAME# : ScriptableAction
 {
-	public override void Act(ScriptableStatesComponent statesComponent)
+	public override void Act(StateComponent stateComponent)
 	{
 		throw new System.NotImplementedException();
 	}

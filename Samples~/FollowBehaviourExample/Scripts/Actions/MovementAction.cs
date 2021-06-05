@@ -5,7 +5,7 @@ using loophouse.ScriptableStates;
 public class MovementAction : ScriptableAction
 {
 	public float speed;
-	public override void Act(ScriptableStatesComponent statesComponent)
+	public override void Act(StateComponent statesComponent)
 	{
 		statesComponent.GetComponent<IMovable>().Move(speed);
 	}
