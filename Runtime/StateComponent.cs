@@ -50,18 +50,23 @@ namespace loophouse.ScriptableStates
             CheckTransitions();
         }
 
-        public void CheckTransitions()
+        private void CheckTransitions()
         {
             ScriptableState nextState = _stateMachine.CheckTransitions(this, _currentState);
             if (nextState != _stateMachine.EmptyState)
             {
-                _currentState.End(this);
-                var previousState = CurrentState;
-                _currentState = nextState;
-                _currentState.Begin(this);
-
-                OnStateChanged?.Invoke(previousState,nextState);
+                MakeTransition(nextState);
             }
+        }
+
+        public void MakeTransition(ScriptableState nextState)
+        {
+            _currentState.End(this);
+            var previousState = CurrentState;
+            _currentState = nextState;
+            _currentState.Begin(this);
+
+            OnStateChanged?.Invoke(previousState, nextState);
         }
 
     }
