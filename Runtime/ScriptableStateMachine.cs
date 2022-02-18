@@ -18,7 +18,7 @@ namespace loophouse.ScriptableStates
         {
             foreach (StateTransition transition in _transitions)
             {
-                if (transition.originState == currentState)
+                if (transition.originStates.Contains(currentState))
                 {
                     if (transition.condition)
                     {
