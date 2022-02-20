@@ -5,30 +5,32 @@ using UnityEngine;
 namespace loophouse.ScriptableStates
 {
     [CreateAssetMenu(menuName = "Scriptable State Machine/State Machine", fileName = "State Machine")]
-    public class ScriptableStateMachine : ScriptableObject
+    public class ScriptableStateMachine : ScriptableObject, ISerializationCallbackReceiver
     {
         [SerializeField] private ScriptableState _initialState;
         [SerializeField] private ScriptableState _emptyState;
         [SerializeField] private List<StateTransition> _transitions;
 
+        private Dictionary<ScriptableState, List<StateTransitionTarget>> _transitionDictionary;
+
         public ScriptableState InitialState { get => _initialState; }
         public ScriptableState EmptyState { get => _emptyState; }
 
         public ScriptableState CheckTransitions(StateComponent stateComponent, ScriptableState currentState)
-        {
-            foreach (StateTransition transition in _transitions)
+        {            
+            if(_transitionDictionary.TryGetValue(currentState, out var targets))
             {
-                if (transition.originState == currentState)
+                foreach (var item in targets)
                 {
-                    if (transition.condition)
+                    if (item.condition)
                     {
-                        if (transition.condition.Verify(stateComponent))
+                        if (item.condition.Verify(stateComponent))
                         {
-                            if (transition.trueState != _emptyState)
+                            if (item.trueState != _emptyState)
                             {
-                                if (transition.trueState)
+                                if (item.trueState)
                                 {
-                                    return transition.trueState;
+                                    return item.trueState;
                                 }
                                 else
                                 {
@@ -38,11 +40,11 @@ namespace loophouse.ScriptableStates
                         }
                         else
                         {
-                            if (transition.falseState != _emptyState)
+                            if (item.falseState != _emptyState)
                             {
-                                if (transition.falseState)
+                                if (item.falseState)
                                 {
-                                    return transition.falseState;
+                                    return item.falseState;
                                 }
                                 else
                                 {
@@ -57,7 +59,29 @@ namespace loophouse.ScriptableStates
                     }
                 }
             }
+
             return _emptyState;
+        }
+
+        public void OnAfterDeserialize()
+        {
+            _transitionDictionary = new Dictionary<ScriptableState, List<StateTransitionTarget>>();
+            foreach (var item in _transitions)
+            {
+                if (_transitionDictionary.ContainsKey(item.originState))
+                {
+                    _transitionDictionary[item.originState].AddRange(item.targets);
+                }
+                else
+                {
+                    _transitionDictionary.Add(item.originState, new List<StateTransitionTarget>(item.targets));
+                }
+            }
+        }
+
+        public void OnBeforeSerialize()
+        {
+            
         }
     }
 }

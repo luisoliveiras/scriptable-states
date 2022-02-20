@@ -50,7 +50,7 @@ namespace loophouse.ScriptableStates
             CheckTransitions();
         }
 
-        public void CheckTransitions()
+        private void CheckTransitions()
         {
             ScriptableState nextState = _stateMachine.CheckTransitions(this, _currentState);
             if (nextState != _stateMachine.EmptyState)
