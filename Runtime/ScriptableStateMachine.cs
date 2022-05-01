@@ -68,14 +68,17 @@ namespace loophouse.ScriptableStates
             _transitionDictionary = new Dictionary<ScriptableState, List<StateTransitionTarget>>();
             foreach (var item in _transitions)
             {
-                if (_transitionDictionary.ContainsKey(item.originState))
-                {
-                    _transitionDictionary[item.originState].AddRange(item.targets);
-                }
+                if (item.originState != null)
+                    if (_transitionDictionary.ContainsKey(item.originState))
+                    {
+                        _transitionDictionary[item.originState].AddRange(item.targets);
+                    }
+                    else
+                    {
+                        _transitionDictionary.Add(item.originState, new List<StateTransitionTarget>(item.targets));
+                    }
                 else
-                {
-                    _transitionDictionary.Add(item.originState, new List<StateTransitionTarget>(item.targets));
-                }
+                    Debug.LogError($"[SCRIPTABLE STATE MACHINE] The transition has an element with a null origin state", this);
             }
         }
 
