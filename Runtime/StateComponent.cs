@@ -64,5 +64,15 @@ namespace loophouse.ScriptableStates
             }
         }
 
+        public void MoveToState(ScriptableState targetState)
+        {
+            _currentState.End(this);
+            var previousState = CurrentState;
+            _currentState = targetState;
+            _currentState.Begin(this);
+
+            OnStateChanged?.Invoke(previousState, targetState);
+        }
+
     }
 }
