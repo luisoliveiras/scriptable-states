@@ -8,7 +8,7 @@ namespace loophouse.ScriptableStates
         [SerializeField] private ScriptableStateMachine _stateMachine;
         private ScriptableState _currentState;
 
-        public ScriptableState CurrentState { get => _currentState; }
+        public ScriptableState CurrentState => _currentState;
         /// <summary>
         /// T1: Previous State, T2: Current State
         /// </summary>
@@ -73,6 +73,11 @@ namespace loophouse.ScriptableStates
 
             OnStateChanged?.Invoke(previousState, targetState);
         }
+
+        // Create a Method to get a registered component in this state component.
+        // There should be a dictionary of components, so there is direct access to them.
+        // There could be a interface for this components, with a common property being something like a tag that could be used as dictionary key.
+
 
     }
 }

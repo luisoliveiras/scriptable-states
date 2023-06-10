@@ -13,8 +13,8 @@ namespace loophouse.ScriptableStates
 
         private Dictionary<ScriptableState, List<StateTransitionTarget>> _transitionDictionary;
 
-        public ScriptableState InitialState { get => _initialState; }
-        public ScriptableState EmptyState { get => _emptyState; }
+        public ScriptableState InitialState => _initialState; 
+        public ScriptableState EmptyState => _emptyState;
 
         public ScriptableState CheckTransitions(StateComponent stateComponent, ScriptableState currentState)
         {            
