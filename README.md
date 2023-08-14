@@ -42,7 +42,7 @@ Select a name for your state and you should be ready to use it. The image below 
 
 ![Scriptable State Asset on Inspector](https://github.com/luisoliveiras/project-images/blob/master/scriptable-states/v0.4.0/inspector_state_01.png?raw=true)
 
-As you can see from the image, a state contains five lists: **Entry Actions**, **Exit Actions**, **Physics Actions** and **State Actions**.
+As you can see from the image, a state contains four lists: **Entry Actions**, **Exit Actions**, **Physics Actions** and **State Actions**.
 - **Entry Actions** are excecuted only once, when there is a transition to the state.
 - **Exit Actions** are executed only once, when there is a transition from the state.
 - **Physics Actions** are executed in the `FixedUpdate()` method.
