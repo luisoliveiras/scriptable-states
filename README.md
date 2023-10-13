@@ -18,7 +18,7 @@ Open the project manifest file under the Packages folder and add these lines to 
 ```json
 "dependencies": {
   ...  
-    "com.loophouse.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git#v0.4.0",
+    "com.loophouse.scriptable-states":"https://github.com/luisoliveiras/scriptable-states.git#0.4.0",
   ...
 }
 
@@ -26,7 +26,7 @@ Open the project manifest file under the Packages folder and add these lines to 
 
 ##### On Unity 2019.3 and above:
 Open the package manager on _**Window > Package Manager**_ and select the **+** button and click on the **Add package from git URL...** option and then add the ScriptableStates package link:  
-https://github.com/luisoliveiras/scriptable-states.git#v0.4.0
+https://github.com/luisoliveiras/scriptable-states.git#0.4.0
 
 _\* You can also add it from disk if you want, just follow the steps from 2018.4 install guide._\
 _\** You can can choose another version of the tool by changing the end of the link (#v0.4.0) for the version you want. Versions under v0.4.0 have a dependency on the reorderable list package._
